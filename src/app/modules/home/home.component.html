@@ -1,0 +1,747 @@
+<div class="container">
+  <nav
+    class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark"
+    id="navbar"
+    (window:scroll)="windowScroll()"
+  >
+    <div class="container">
+      <div
+        class="mt-1"
+        [ngClass]="{
+          'toggleSwitchThemePhone-ltr': topBarService.dir === 'ltr',
+          'toggleSwitchThemePhone-rtl': topBarService.dir === 'rtl'
+        }"
+      >
+        <app-dark-themetoogle
+          class="show-theme-desktop"
+          [ref]="'home'"
+        ></app-dark-themetoogle>
+      </div>
+      <a class="navbar-brand" style="width: 15%" href="#"
+      [ngClass]="{
+        'image-style-ltr': topBarService.dir === 'ltr',
+        'image-style-rtl': topBarService.dir === 'rtl'
+      }">
+        <img class="logo logo-width" src="../../assets/img/Asset 2.svg"
+      /></a>
+
+      <a
+        (click)="toggleMenu()"
+        class="btn btn-icon btn-white navbar-toggler cursor-pointer"
+        ><span class="svg-icon svg-icon-1 svg-icon-primary">
+          <span
+            *ngIf="!collapsed"
+            [inlineSVG]="'assets/media/icons/duotune/abstract/abs015.svg'"
+          ></span>
+
+          <span
+            *ngIf="collapsed"
+            [inlineSVG]="'assets/media/icons/duotune/general/gen036.svg'"
+          ></span> </span
+      ></a>
+
+      <!-- LOGO -->
+
+      <div
+        class="collapse navbar-collapse d-lg-flex justify-content-md-between"
+        id="navbarCollapse"
+      >
+        <ul
+          class="navbar-nav navbar-center"
+          [ngClass]="{
+            'nav-bar-elements-ltr': topBarService.dir === 'ltr',
+            'nav-bar-elements-rtl': topBarService.dir === 'rtl'
+          }"
+          style="padding: 0px"
+        >
+          <li
+            class="nav-item"
+            (click)="toggleMenu()"
+            [ngClass]="{
+              active: currentSection === 'home',
+              'nav-item-fr': topBarService.lang === 'fr',
+              'nav-item-other': topBarService.lang !== 'fr'
+            }"
+          >
+            <a
+              [ngxScrollTo]="'#home'"
+              href="javascript: void(0);"
+              class="nav-link"
+              [ngClass]="{
+                'element-size-ltr': topBarService.dir === 'ltr',
+                'element-size-rtl': topBarService.dir === 'rtl'
+              }"
+            >
+              {{ 'HOME.HEADER.HOME' | translate }}
+            </a>
+          </li>
+          <li
+            class="nav-item"
+            (click)="toggleMenu()"
+            [ngClass]="{
+              active: currentSection === 'about',
+              'nav-item-fr': topBarService.lang === 'fr',
+              'nav-item-other': topBarService.lang !== 'fr'
+            }"
+          >
+            <a
+              [ngxScrollTo]="'#about'"
+              href="javascript: void(0);"
+              class="nav-link"
+              [ngClass]="{
+                'element-size-ltr': topBarService.dir === 'ltr',
+                'element-size-rtl': topBarService.dir === 'rtl'
+              }"
+            >
+              {{ 'HOME.HEADER.ABOUT' | translate }}
+            </a>
+          </li>
+          <li
+            class="nav-item"
+            (click)="toggleMenu()"
+            [ngClass]="{
+              active: currentSection === 'secuLedger',
+              'nav-item-fr': topBarService.lang === 'fr',
+              'nav-item-other': topBarService.lang !== 'fr'
+            }"
+          >
+            <a
+              [ngxScrollTo]="'#seculedger'"
+              href="javascript: void(0);"
+              class="nav-link"
+              [ngClass]="{
+                'element-size-ltr': topBarService.dir === 'ltr',
+                'element-size-rtl': topBarService.dir === 'rtl'
+              }"
+            >
+              {{ 'HOME.HEADER.SECULEDGER' | translate }}
+            </a>
+          </li>
+
+          <li
+            class="nav-item"
+            (click)="toggleMenu()"
+            [ngClass]="{
+              active: currentSection === 'features',
+              'nav-item-fr': topBarService.lang === 'fr',
+              'nav-item-other': topBarService.lang !== 'fr'
+            }"
+          >
+            <a
+              [ngxScrollTo]="'#features'"
+              href="javascript: void(0);"
+              class="nav-link"
+              [ngClass]="{
+                'element-size-ltr': topBarService.dir === 'ltr',
+                'element-size-rtl': topBarService.dir === 'rtl'
+              }"
+            >
+              {{ 'HOME.HEADER.FEATURES' | translate }}
+            </a>
+          </li>
+
+          <li
+            class="nav-item"
+            (click)="toggleMenu()"
+            [ngClass]="{
+              active: currentSection === 'contact',
+              'nav-item-fr': topBarService.lang === 'fr',
+              'nav-item-other': topBarService.lang !== 'fr'
+            }"
+          >
+            <a
+              [ngxScrollTo]="'#contact'"
+              href="javascript: void(0);"
+              class="nav-link"
+              [ngClass]="{
+                'element-size-ltr': topBarService.dir === 'ltr',
+                'element-size-rtl': topBarService.dir === 'rtl'
+              }"
+            >
+              {{ 'HOME.HEADER.CONTACT' | translate }}
+            </a>
+          </li>
+        </ul>
+        <div
+          class="d-flex justify-content-end align-items-center"
+          [ngStyle]="{
+            right: topBarService.lang === 'fr' ? '-30px' : '',
+            position: topBarService.lang === 'fr' ? 'relative' : ''
+          }"
+        >
+          <a
+            [routerLink]="['/auth/login']"
+            class="btn btn-white svg-icon-gray-500 btn-active-icon-primary btn-active-text-primary fontSize"
+          >
+            <span
+              class="svg-icon svg-icon-1"
+              [ngClass]="{
+                'sign-icon-ltr': topBarService.dir === 'ltr',
+                'sign-icon-rtl': topBarService.dir === 'rtl'
+              }"
+            >
+              <span
+                [inlineSVG]="'assets/media/icons/duotune/technology/teh004.svg'"
+              >
+              </span>
+            </span>
+            {{ 'HOME.HEADER.SIGN_IN' | translate }}
+          </a>
+
+          <div ngbDropdown placement="bottom-right" class="d-inline-block">
+            <a
+              class="btn btn-white btn-active-icon-primary btn-active-text-primary mx-3 d-none d-lg-block fontSize"
+              ngbDropdownToggle
+            >
+              {{ 'LANG.' + language.name | translate }}
+              <img
+                class="rounded"
+                [ngClass]="language.lang === 'fr' ? 'mx-1' : 'mx-2'"
+                style="width: 18px; height: 18px"
+                src="{{ language?.flag }}"
+                alt="language"
+              />
+            </a>
+            <a
+              class="btn btn-white btn-active-icon-primary btn-active-text-primary mx-3 d-block d-lg-none"
+              ngbDropdownToggle
+              [ngxScrollTo]="'#last'"
+              href="javascript: void(0);"
+            >
+              {{ 'LANG.' + language.name | translate }}
+              <img
+                class="rounded"
+                [ngClass]="language.lang === 'fr' ? 'mx-1' : 'mx-2'"
+                style="width: 18px; height: 18px"
+                src="{{ language?.flag }}"
+                alt="language"
+              />
+            </a>
+            <div ngbDropdownMenu>
+              <div
+                ngbDropdownItem
+                *ngFor="let l of langs; let i = index"
+                class="menu-item px-3 cursor-pointer"
+                (click)="selectLanguage(l.lang)"
+              >
+                <a
+                  class="menu-link d-flex px-5 hoverColor"
+                  [ngClass]="l.lang === language?.lang ? 'active' : ''"
+                  [id]="i === langs.length - 1 ? 'last' : ''"
+                >
+                  <span class="symbol symbol-20px mx-2">
+                    <img class="rounded-1" [src]="l.flag" alt="Seculedger" />
+                  </span>
+                  {{ l.name }}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <app-dark-themetoogle
+            class="show-theme-phone"
+            [ref]="'home'"
+          ></app-dark-themetoogle>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+<div
+  appScrollspy
+  [spiedTags]="['SECTION']"
+  (sectionChange)="onSectionChange($event)"
+>
+  <header id="home" name="home">
+    <div [ngClass]="{ 'img-rtl': topBarService.dir === 'rtl' }">
+      <img
+        src="../../../assets/img/backk.png"
+        class="image-back"
+        alt=""
+        srcset=""
+      />
+    </div>
+    <div
+      style="position: absolute"
+      class="text-inside-pic"
+      [ngClass]="'header_-' + topBarService.dir"
+      [ngStyle]="{
+        'text-align': topBarService.dir === 'rtl' ? 'right' : 'left'
+      }"
+    >
+      <h1 class="text-white fw-bolder SECULEDGER">
+        {{ 'HOME.HEADER.SECULEDGER' | translate }}
+      </h1>
+      <h3 style="color: aliceblue" class="fw-bold Edge">
+        {{ 'HOME.HEADER.SUB_TITLE' | translate }}
+      </h3>
+      <a
+        [routerLink]="['/auth/userRoles']"
+        class="btn btn-icon btn-primary btn-active-icon-white btn-active-text-white"
+        style="width: 150px"
+      >
+        <span
+          class="svg-icon svg-icon-1"
+          [ngClass]="{
+            'sign-icon-ltr': topBarService.dir === 'ltr',
+            'sign-icon-rtl': topBarService.dir === 'rtl'
+          }"
+        >
+          <span
+            [inlineSVG]="'assets/media/icons/duotune/technology/teh003.svg'"
+          >
+          </span>
+        </span>
+        {{ 'HOME.HEADER.SIGN_UP' | translate }}
+      </a>
+    </div>
+    <!-- <div class="text-box">
+      <h1 class="SECULEDGER">
+        {{ 'HOME.HEADER.SECULEDGER' | translate }}
+      </h1>
+      <h3 class="Edge" style="color: aliceblue">
+        {{ 'HOME.HEADER.SUB_TITLE' | translate }}
+      </h3>
+      <div class="iconsing container text-center">
+        <div class="col-md-6 text-center">
+          <a
+            [routerLink]="['/auth/userRoles']"
+            class="btn btn-icon btn-primary btn-active-icon-white btn-active-text-white"
+            style="width: 170px"
+          >
+            <span
+              class="svg-icon svg-icon-1"
+              [ngClass]="{
+                'sign-icon-ltr': topBarService.dir === 'ltr',
+                'sign-icon-rtl': topBarService.dir === 'rtl'
+              }"
+            >
+              <span
+                [inlineSVG]="'assets/media/icons/duotune/technology/teh003.svg'"
+              >
+              </span>
+            </span>
+            {{ 'HOME.HEADER.SIGN_UP' | translate }}
+          </a>
+        </div>
+      </div>
+    </div> -->
+  </header>
+
+  <section class="About" id="about" style="padding: 40px 0">
+    <div class="container">
+      <div class="row text-center">
+        <h2>
+          {{ 'HOME.HEADER.ABOUT' | translate }}
+        </h2>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p
+            style="font-size: 17px; line-height: 25px"
+            class="text-muted about-text"
+          >
+            {{ 'HOME.BODY.ABOUT_US_1' | translate }}
+          </p>
+          <p
+            style="font-size: 17px; line-height: 25px"
+            class="text-muted about-text"
+          >
+            {{ 'HOME.BODY.ABOUT_US_2' | translate }}
+          </p>
+        </div>
+      </div>
+      <div class="row margin-t-30">
+        <div class="col-md">
+          <div class="services-box text-center hover-effect">
+            <i class="pe-7s-cart text-custom"></i>
+            <span>
+              <h4 class="padding-t-15 statistics">
+                {{ statistics.suppliers }}
+              </h4>
+            </span>
+            <p class="padding-t-15 text-muted-statistics">
+              {{ 'HOME.BODY.SUPPLIERS' | translate }}
+            </p>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="services-box text-center hover-effect">
+            <i class="pe-7s-portfolio text-custom"></i>
+            <span>
+              <h4 class="padding-t-15 statistics">
+                {{ statistics.regulators }}
+              </h4>
+            </span>
+            <p class="padding-t-15 text-muted-statistics">
+              {{ 'HOME.BODY.REGULATORS' | translate }}
+            </p>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="services-box text-center hover-effect">
+            <i class="pe-7s-wallet text-custom"></i>
+            <span>
+              <h4 class="padding-t-15 statistics">{{ statistics.buyers }}</h4>
+            </span>
+            <p class="padding-t-15 text-muted-statistics">
+              {{ 'HOME.BODY.BUYERS' | translate }}
+            </p>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="services-box text-center hover-effect">
+            <i class="pe-7s-shopbag text-custom"></i>
+            <span>
+              <h4 class="padding-t-15 statistics">{{ statistics.orders }}</h4>
+            </span>
+            <p class="padding-t-15 text-muted-statistics">
+              {{ 'HOME.BODY.ORDERS' | translate }}
+            </p>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="services-box text-center hover-effect">
+            <i class="pe-7s-menu text-custom"></i>
+            <span>
+              <h4 class="padding-t-15 statistics">
+                {{ statistics.workflows }}
+              </h4>
+            </span>
+            <p class="padding-t-15 text-muted-statistics">
+              {{ 'HOME.BODY.WORKFLOWS' | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="WSecuLedger" id="seculedger">
+    <h2>{{ 'HOME.BODY.WHY_SECULEDGER' | translate }}</h2>
+    <div class="container">
+      <img
+        src="assets\img\WhySeculedger.svg"
+        *ngIf="topBarService.dir === 'ltr' && topBarService.lang !== 'fr'"
+        alt="Why SECULEDGER ?"
+      />
+      <img
+        src="assets\img\WhySeculedger-ar.svg"
+        *ngIf="topBarService.dir === 'rtl'"
+        alt="Why SECULEDGER ?"
+      />
+      <img
+        src="assets\img\WhySeculedger-fr.svg"
+        *ngIf="topBarService.dir === 'ltr' && topBarService.lang === 'fr'"
+        alt="Why SECULEDGER ?"
+      />
+    </div>
+  </section>
+
+  <section class="feautures" id="features">
+    <div class="container">
+      <h2 style="color: #d0d1d1">
+        {{ 'HOME.HEADER.FEATURES' | translate }}
+      </h2>
+      <div class="row text-center">
+        <div class="col-md-4 col-sm-6">
+          <img src="assets/img/users .svg" alt="" />
+          <h3 [matTooltip]="'HOME.BODY.F1_TITLE' | translate">
+            {{ 'HOME.BODY.F1' | translate }}
+          </h3>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <img src="assets/img/list.svg" alt="" />
+          <h3 [matTooltip]="'HOME.BODY.F2_TITLE' | translate">
+            {{ 'HOME.BODY.F2' | translate }}
+          </h3>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <img src="assets/img/management.svg" alt="" />
+          <h3 [matTooltip]="'HOME.BODY.F3_TITLE' | translate">
+            {{ 'HOME.BODY.F3' | translate }}
+          </h3>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <img src="assets/img/order.svg" alt="" />
+          <h3 [matTooltip]="'HOME.BODY.F4_TITLE' | translate">
+            {{ 'HOME.BODY.F4' | translate }}
+          </h3>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <img src="assets/img/history.svg" alt="" />
+          <h3 [matTooltip]="'HOME.BODY.F5_TITLE' | translate">
+            {{ 'HOME.BODY.F5' | translate }}
+          </h3>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <img src="assets/img/hash.svg" alt="" />
+          <h3 [matTooltip]="'HOME.BODY.F6_TITLE' | translate">
+            {{ 'HOME.BODY.F6' | translate }}
+          </h3>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <img src="assets/img/structure.svg" alt="" />
+          <h3 [matTooltip]="'HOME.BODY.F7_TITLE' | translate">
+            {{ 'HOME.BODY.F7' | translate }}
+          </h3>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <img src="assets/img/manufacture.svg" alt="" />
+          <h3 [matTooltip]="'HOME.BODY.F8_TITLE' | translate">
+            {{ 'HOME.BODY.F8' | translate }}
+          </h3>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <img src="assets/img/analytics.svg" alt="" />
+          <h3 [matTooltip]="'HOME.BODY.F9_TITLE' | translate">
+            {{ 'HOME.BODY.F9' | translate }}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <section name="contact">
+            <div class="row">
+              <h2>
+                {{ 'HOME.BODY.CONTACT_US' | translate }}
+              </h2>
+            </div>
+            <div class="row">
+              <form [formGroup]="Contactform" (ngSubmit)="sendMessage()">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group mt-2">
+                      <input
+                        name="name"
+                        formControlName="name"
+                        id="name"
+                        type="text"
+                        class="form-control"
+                        placeholder="{{ 'CONTACT.NAME' | translate }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group mt-2">
+                      <input
+                        name="email"
+                        formControlName="email"
+                        id="email"
+                        type="email"
+                        class="form-control"
+                        placeholder="{{ 'CONTACT.EMAIL' | translate }}"
+                      />
+                      <span
+                        class="text-danger"
+                        *ngIf="
+                          Contactform.get('email')?.value !== '' &&
+                          Contactform.get('email')?.invalid
+                        "
+                      >
+                        {{ 'SHARED.INPUT.InEmail' | translate }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group mt-2">
+                      <input
+                        type="text"
+                        formControlName="subject"
+                        class="form-control"
+                        id="subject"
+                        placeholder="{{ 'CONTACT.SUBJECT' | translate }}"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group mt-2">
+                      <textarea
+                        name="comments"
+                        id="comments"
+                        formControlName="message"
+                        rows="4"
+                        class="form-control"
+                        placeholder="{{ 'CONTACT.MESSAGE' | translate }}"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-7">
+                    <div class="form-group mt-2">
+                      <re-captcha
+                        (resolved)="resolved($event)"
+                        [siteKey]="siteKey"
+                        formControlName="captcha"
+                      ></re-captcha>
+                    </div>
+                  </div>
+                  <div class="col-lg-5">
+                    <div class="form-group mt-2">
+                      <button
+                        type="submit"
+                        class="btn btn-icon btn-primary btn-active-icon-white btn-active-text-white"
+                        style="width: 200px"
+                        [disabled]="Contactform.invalid || disable === true"
+                      >
+                        {{ 'CONTACT.TITLE' | translate }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row"></div>
+              </form>
+            </div>
+          </section>
+        </div>
+
+        <div class="col-md-7 text-center">
+          <a href="/home"
+            ><img src="assets/img/Multicolor.png" alt="IR4LAB" width="300px"
+          /></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- <footer>
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 offset-lg-2">
+            <h2 class="section-title text-center">
+              {{ 'CONTACT.TITLE' | translate }}
+            </h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="custom-form mt-4 pt-4">
+              <div id="message"></div>
+              <form [formGroup]="Contactform" (ngSubmit)="sendMessage()">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group mt-2">
+                      <input
+                        name="name"
+                        formControlName="name"
+                        id="name"
+                        type="text"
+                        class="form-control"
+                        placeholder="{{ 'CONTACT.NAME' | translate }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group mt-2">
+                      <input
+                        name="email"
+                        formControlName="email"
+                        id="email"
+                        type="email"
+                        class="form-control"
+                        placeholder="{{ 'CONTACT.EMAIL' | translate }}"
+                      />
+                      <span
+                        class="text-danger"
+                        *ngIf="
+                          Contactform.get('email')?.value !== '' &&
+                          Contactform.get('email')?.invalid
+                        "
+                      >
+                        {{ 'SHARED.INPUT.InEmail' | translate }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group mt-2">
+                      <input
+                        type="text"
+                        formControlName="subject"
+                        class="form-control"
+                        id="subject"
+                        placeholder="{{ 'CONTACT.SUBJECT' | translate }}"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group mt-2">
+                      <textarea
+                        name="comments"
+                        id="comments"
+                        formControlName="message"
+                        rows="4"
+                        class="form-control"
+                        placeholder="{{ 'CONTACT.MESSAGE' | translate }}"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <re-captcha
+                  (resolved)="resolved($event)"
+                  [siteKey]="siteKey"
+                  formControlName="captcha"
+                ></re-captcha>
+                <div class="row">
+                  <div class="col-md-3 text-right" style="margin-left: auto">
+                    <app-button
+                      [backgroundColor]="'#f85f89'"
+                      [fontColor]="'#fff'"
+                      [label]="'CONTACT.TITLE' | translate"
+                      [isDisabled]="Contactform.invalid || disable === true"
+                      [isLoading]="isLoading"
+                    >
+                    </app-button>
+    
+                    <div id="simple-msg"></div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-7 text-center">
+              <a href="/home"
+                ><img src="assets/img/Multicolor.png" alt="IR4LAB" width="300px"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </footer> -->
+</div>
+<div class="copy">
+  <P class="text-center"
+    >©Copyright IR4LAB. {{ 'HOME.BODY.ALL_RIGHT' | translate }}</P
+  >
+</div>
+
+<!-- 
+
+brain storming time 
+
+  brand
+  name :  
+    - organic decore
+    - clean decore
+    - organic atmosphere
+    - organic space
+
+  film
+    - 
+
+-->
