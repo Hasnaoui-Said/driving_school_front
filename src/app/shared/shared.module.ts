@@ -10,6 +10,9 @@ import { ContentPlaceholderAnimationComponent } from './content-placeholder-anim
 import { LocalDatePipe } from './pipes/local-date.pipe';
 import { YesNoPipe } from './pipes/yes-no.pipe';
 import { LayoutComponent } from './layout/layout.component';
+import { DiaConfirmComponent } from './dia-confirm/dia-confirm.component';
+import { EmptyListComponent } from './empty-list/empty-list.component';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
     imports: [
@@ -25,18 +28,23 @@ import { LayoutComponent } from './layout/layout.component';
         LimitToPipe,
         LocalDatePipe,
         YesNoPipe,
-        LayoutComponent
+        LayoutComponent,
+        DiaConfirmComponent,
+        EmptyListComponent,
+        ButtonComponent
     ],
-    exports: [
-        FormsModule,
-        ReactiveFormsModule,
-        FlexLayoutModule,
-        CustomMaterialModule,
-        LimitToPipe,
-        ConfirmDialogComponent,
-        ContentPlaceholderAnimationComponent,
-        LocalDatePipe,
-        YesNoPipe
-    ]
+  exports: [
+    FormsModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
+    CustomMaterialModule,
+    LimitToPipe,
+    ConfirmDialogComponent,
+    ContentPlaceholderAnimationComponent,
+    LocalDatePipe,
+    YesNoPipe,
+    EmptyListComponent,
+    ButtonComponent
+  ]
 })
 export class SharedModule { }
