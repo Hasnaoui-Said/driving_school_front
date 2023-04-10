@@ -4,6 +4,7 @@ import { Error403Component } from './error403/error403.component';
 import { Error404Component } from './error404/error404.component';
 import { Error500Component } from './error500/error500.component';
 import { ErrorsComponent } from './errors.component';
+import {Error401Component} from "./error401/error401.component";
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: '500',
         component: Error500Component
+      },
+      {
+        path: '401',
+        component: Error401Component
       },
       {
         path: '403',

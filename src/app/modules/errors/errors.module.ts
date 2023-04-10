@@ -6,6 +6,7 @@ import { ErrorsComponent } from '../errors/errors.component';
 import { Error404Component } from './error404/error404.component';
 import { Error500Component } from './error500/error500.component';
 import { Error403Component } from './error403/error403.component';
+import {Error401Component} from "./error401/error401.component";
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { Error403Component } from './error403/error403.component';
     ErrorsComponent,
     Error404Component,
     Error500Component,
-    Error403Component
+    Error403Component,
+    Error401Component
   ],
   imports: [
     CommonModule,

@@ -1,13 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  DrawerComponent,
-  MenuComponent,
-  ScrollComponent,
-  ScrollTopComponent,
-  StickyComponent,
-  ToggleComponent,
-} from '../../_metronic/kt/components';
 
 @Component({
   selector: 'app-errors',
@@ -21,14 +13,6 @@ export class ErrorsComponent implements OnInit {
   ngOnInit(): void {}
 
   routeToDashboard() {
-    this.router.navigate(['dashboard']);
-    setTimeout(() => {
-      ToggleComponent.bootstrap();
-      ScrollTopComponent.bootstrap();
-      DrawerComponent.bootstrap();
-      StickyComponent.bootstrap();
-      MenuComponent.bootstrap();
-      ScrollComponent.bootstrap();
-    }, 200);
+
   }
 }
