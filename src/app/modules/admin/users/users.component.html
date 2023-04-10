@@ -1,0 +1,18 @@
+<mat-card class="m-3">
+  <mat-card-header>
+    <mat-card-title>Users</mat-card-title>
+    <mat-card-subtitle>List</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <app-users-list
+        [data]="users"
+        [userLength]="usersLength"
+        [loadingData]="loadingData"
+        (onChangeStateFromUser)="ChangeStateFromUser($event)"
+        (openAddUserDialog)="openAddUserDialog()"
+      >
+      </app-users-list>
+    </div>
+  </mat-card-content>
+</mat-card>

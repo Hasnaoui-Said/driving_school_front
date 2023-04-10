@@ -1,0 +1,55 @@
+<ng-container *ngIf="data.confirmRef == 'users'; else offers">
+  <div class="my-5">
+    <div mat-dialog-title>
+      <div class="d-flex justify-content-center">
+    <span class="svg-icon svg-icon-5tx svg-icon-danger">
+      <img width="24" src="assets/media/icons/duotune/general/gen044.svg"/>
+    </span>
+      </div>
+      <div class="d-flex justify-content-center">{{ data.title }}</div>
+    </div>
+
+    <div mat-dialog-content>
+      <p class="dialog-message fw-bold">{{ data.message }}</p>
+    </div>
+    <div class="d-flex justify-content-center" mat-dialog-actions>
+      <div mat-dialog-actions>
+        <button mat-button (click)="dialogRef.close(false)">Concel</button>
+        <button mat-button class="badge"
+                [ngClass]="{
+            'text-success bg-light-success': data.state === 'ACTIVATED',
+            'text-danger bg-light-danger': data.state === 'BLOCKED',
+            'text-warning bg-light-warning': data.state === 'PENDING',
+            'text-info bg-light-info': data.state === 'RESTRICTED'
+          }" (click)="dialogRef.close(true)" cdkFocusInitial>{{data.state}}</button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #offers>
+  <div class="my-3">
+    <div mat-dialog-title>
+      <div class="d-flex justify-content-center">
+        <span class="svg-icon svg-icon-5tx svg-icon-danger my-2">
+          <img width="70" height="70" src="assets/media/icons/duotune/general/gen044.svg"/>
+        </span>
+      </div>
+      <div class="d-flex justify-content-center">{{ data.title }}</div>
+    </div>
+
+    <div mat-dialog-content>
+      <p class="dialog-message fw-bold">{{ data.message }}</p>
+    </div>
+    <div class="d-flex justify-content-center" mat-dialog-actions>
+      <div mat-dialog-actions>
+        <button mat-button (click)="dialogRef.close(false)">Cancel</button>
+        <button mat-button class="badge"
+                [ngClass]="{
+            'text-success bg-light-success': data.state === 'REJECTED',
+            'text-danger bg-light-danger': data.state === 'ACCEPTED'
+          }" (click)="dialogRef.close(true)" cdkFocusInitial>{{data.state}}</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

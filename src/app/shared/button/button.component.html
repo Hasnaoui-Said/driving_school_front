@@ -1,0 +1,8 @@
+<ng-container *ngTemplateOutlet="ButtonRef">
+</ng-container>
+
+
+<ng-template #ButtonRef>
+  <button [class]="style" mat-button mat-flat-button color="{{color}}" [disabled]="disabled"
+          (click)="onButtonClick()">{{LabelButton}}</button>
+</ng-template>
