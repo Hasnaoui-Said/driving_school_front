@@ -2,8 +2,8 @@ import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { AuthenticationService } from 'src/app/core/services/auth.service';
-import { NotificationService } from 'src/app/core/services/notification.service';
+import {AuthenticationService} from "../../../services/auth.service";
+import {NotificationService} from "../../../services/notification.service";
 
 @Component({
   selector: 'app-password-reset',
@@ -25,7 +25,7 @@ export class PasswordResetComponent implements OnInit {
     private notificationService: NotificationService,
     private titleService: Title) {
 
-    this.titleService.setTitle('angular-material-template - Password Reset');
+    this.titleService.setTitle('Driving School - Password Reset');
     this.hideNewPassword = true;
     this.hideNewPasswordConfirm = true;
   }
