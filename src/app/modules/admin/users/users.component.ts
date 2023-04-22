@@ -12,20 +12,32 @@ import {DiaConfirmComponent} from "../../../shared/dia-confirm/dia-confirm.compo
 })
 export class UsersComponent implements OnInit{
   users: any;
+  content: any;
   usersLength: number = 0;
+  numberOfElements: number = 2;
   loadingData: boolean = true;
+  totalElements: number = 0;
+  pageNumber: number = 0;
+  totalPages: number = 0;
 
   constructor(private userService: UsersService,
               private _snackBar: MatSnackBar,
               private dialog: MatDialog) {
   }
   ngOnInit(): void {
-    this.userService.getUsers().subscribe(
+    this.getUsers(this.pageNumber, this.numberOfElements);
+  }
+  getUsers(pageIndex: number, pageSize: number) {
+    this.userService.getUsersPage(pageIndex, pageSize).subscribe(
       next => {
+        console.log(next);
         this.loadingData = false;
-        this.usersLength = next.data.length;
-        this.users = next.data;
-        console.log(next)
+        this.numberOfElements = next.data.numberOfElements;
+        this.totalPages = next.data.totalPages;
+        this.pageNumber = next.data.pageable.pageNumber;
+        this.totalElements = next.data.totalElements;
+        this.users = next.data.content;
+        this.content = next.data.content;
       }, error => {
         console.error(error);
       }
@@ -82,5 +94,10 @@ export class UsersComponent implements OnInit{
     //     labelButtonCancel: "Add",
     //   }
     // });
+  }
+
+  pageableUsers(e: any) {
+    console.log(e)
+    this.getUsers(e.pageIndex, e.pageSize);
   }
 }

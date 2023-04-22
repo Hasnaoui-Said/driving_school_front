@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {User} from "../../../../models/User";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-users-list',
@@ -19,10 +20,14 @@ export class UsersListComponent {
   columnsToDisplay = ['username', 'email', 'phone', 'cin'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand', 'accountState'];
   expandedElement: User | undefined;
-  @Input('data') dataSource: any;
-  @Input('userLength') usersLength: number | undefined;
+  @Input('content') dataSource: any;
+  @Input('numberOfElements') numberOfElements: number | undefined;
+  @Input('totalPages') totalPages: number | undefined;
+  @Input('pageNumber') pageNumber: number | undefined;
+  @Input('totalElements') totalElements: number | undefined;
 
   @Output() onChangeStateFromUser = new EventEmitter();
+  @Output() pageableUsers = new EventEmitter();
   @Output() openAddUserDialog = new EventEmitter();
   @Input()loadingData: boolean = true;
 
@@ -39,4 +44,22 @@ export class UsersListComponent {
   onOpenAddUserDialog() {
     this.openAddUserDialog.emit();
   }
+
+  pageSizeOptions = [5, 10, 25, 50];
+
+  hidePageSize = false;
+  showPageSizeOptions = true;
+  showFirstLastButtons = true;
+  disabled = false;
+
+  pageEvent: PageEvent | undefined;
+
+  handlePageEvent(e: PageEvent) {
+    this.pageEvent = e;
+    this.totalElements = e.length;
+    this.numberOfElements = e.pageSize;
+    this.pageNumber = e.pageIndex;
+    this.pageableUsers.emit(e);
+  }
+
 }

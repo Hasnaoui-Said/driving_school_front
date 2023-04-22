@@ -6,10 +6,14 @@
   <mat-card-content>
     <div>
       <app-users-list
-        [data]="users"
-        [userLength]="usersLength"
+        [content]="content"
+        [totalPages]="totalPages"
+        [pageNumber]="pageNumber"
+        [numberOfElements]="numberOfElements"
+        [totalElements]="totalElements"
         [loadingData]="loadingData"
         (onChangeStateFromUser)="ChangeStateFromUser($event)"
+        (pageableUsers)="pageableUsers($event)"
         (openAddUserDialog)="openAddUserDialog()"
       >
       </app-users-list>

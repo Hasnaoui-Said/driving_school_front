@@ -13,6 +13,8 @@ import {Router} from "@angular/router";
 export class AuthenticationService {
 
   API_AUTH_URL = `${environment.apiUrl}/auth`;
+  API_USERS_URL = `${environment.apiUrl}/users`;
+
   constructor(private http: HttpClient,
               private router: Router,
               @Inject('LOCALSTORAGE') private localStorage: Storage) {
@@ -32,18 +34,21 @@ export class AuthenticationService {
           } else return false;
         }));
   }
+
   isTokenExpired(token: string): boolean {
-    const decodedToken:any = jwt_decode(token);
+    const decodedToken: any = jwt_decode(token);
     const expirationTime = decodedToken.exp;
     const currentTime = Math.floor(Date.now() / 1000); // convert to seconds
     return expirationTime < currentTime;
   }
-  setCurrentUser(successJeton: string, refreshJeton: string){
+
+  setCurrentUser(successJeton: string, refreshJeton: string) {
     // const successJeton = response.body.data.successJeton;
     // const refreshJeton = response.body.data.refreshJeton;
-    const tokenDecoded : any = jwt_decode(successJeton);
+    const tokenDecoded: any = jwt_decode(successJeton);
     console.log("store email and jwt token in local storage to keep user logged in between page refreshes", tokenDecoded)
-    let email = tokenDecoded.sub, exp = tokenDecoded.exp, iss = tokenDecoded.iss, authorities = tokenDecoded.authorities[0];
+    let email = tokenDecoded.sub, exp = tokenDecoded.exp, iss = tokenDecoded.iss,
+      authorities = tokenDecoded.authorities[0];
     console.log(email)
     this.localStorage.setItem('currentUser', JSON.stringify({
       token: successJeton,
@@ -85,9 +90,13 @@ export class AuthenticationService {
     return this.http.get<any>(`${this.API_AUTH_URL}/principal`);
   }
 
-  refreshToken():Observable<any> {
+  refreshToken(): Observable<any> {
     console.log("refresh")
     return this.http.get(`${this.API_AUTH_URL}/refresh`);
   }
 
+  singUp(signUpData: any): Observable<any> {
+    return this.http.post(`${this.API_USERS_URL}/`, signUpData)
+      .pipe(delay(1000));
+  }
 }

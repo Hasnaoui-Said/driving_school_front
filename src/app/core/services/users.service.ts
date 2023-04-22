@@ -14,6 +14,11 @@ export class UsersService {
               @Inject('LOCALSTORAGE') private localStorage: Storage) {
   }
 
+  getUsersPage(pageIndex: number, pageSize: number): Observable<any> {
+    const params = { page: pageIndex.toString(), size: pageSize.toString() };
+    return this.http.get(this.API_AUTH_URL, { params });
+  }
+
   getUsers():Observable<any> {
     return this.http.get(this.API_AUTH_URL);
   }

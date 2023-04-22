@@ -1,1 +1,162 @@
-<p>sing-up works!</p>
+<div class="container signup-container" fxLayout="row" fxLayout.sm="column" fxLayoutAlign="space-evenly center">
+  <div fxFlex="80%" fxFlex.xs="95%" fxLayout="row" fxLayout.sm="column" fxLayoutGap="20px">
+    <div fxFlex="30">
+      <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <ng-template matStepLabel>Create your account</ng-template>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <ng-template matStepLabel>Fill out your address</ng-template>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p>You are now done.</p>
+          <!--        <div>-->
+          <!--          <button mat-button matStepperPrevious>Back</button>-->
+          <!--          <button mat-button (click)="stepper.reset()">Reset</button>-->
+          <!--        </div>-->
+        </mat-step>
+      </mat-stepper>
+    </div>
+    <div class="" fxFlex="70">
+      <div class="createAccount">
+        <form [formGroup]="firstFormGroup">
+          <div class="form-group" fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="10">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" required>
+              <mat-error *ngIf="firstFormGroup.get('firstName')?.hasError('required')">
+                Please enter a first name
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" required>
+              <mat-error *ngIf="firstFormGroup.get('lastName')?.hasError('required')">
+                Please enter a last name
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+
+          <div class="form-group" fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="10">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Username</mat-label>
+              <input matInput formControlName="username" required>
+              <mat-error *ngIf="firstFormGroup.get('username')?.hasError('required')">
+                Please enter a username
+              </mat-error>
+              <mat-error id="minlengthEmailError" *ngIf="firstFormGroup.get('username')?.hasError('minlength')">
+                Email must be at least 4 characters
+              </mat-error>
+              <mat-error id="maxlengthEmailError" *ngIf="firstFormGroup.get('username')?.hasError('maxlength')">
+                Email must be at most 30 characters
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" autocomplete="email" type="email" required>
+              <mat-error *ngIf="firstFormGroup.get('email')?.hasError('email')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="firstFormGroup.get('email')?.hasError('required')">
+                Email address is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group" fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="10">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Gender</mat-label>
+              <mat-select formControlName="gender" required>
+                <mat-option value="male">Male</mat-option>
+                <mat-option value="female">Female</mat-option>
+                <mat-option value="other">Other</mat-option>
+              </mat-select>
+              <mat-error *ngIf="firstFormGroup.get('gender')?.hasError('required')">
+                Please select a gender
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>CIN</mat-label>
+              <input matInput formControlName="cin" required>
+              <mat-error *ngIf="firstFormGroup.get('cin')?.hasError('required')">
+                Please enter a CIN
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+
+          <div class="form-group" fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="10">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Phone</mat-label>
+              <span matPrefix>+212 &nbsp;</span>
+              <input matInput type="tel" formControlName="phone" placeholder="677-555-1234" required>
+              <mat-icon matSuffix>mode_edit</mat-icon>
+              <mat-error *ngIf="firstFormGroup.get('phone')?.hasError('required')">
+                Please enter a phone number
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>City</mat-label>
+              <input matInput formControlName="ville" required>
+              <mat-error *ngIf="firstFormGroup.get('ville')?.hasError('required')">
+                Please enter a city
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+          <div class="form-group" fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10">
+
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Address</mat-label>
+              <textarea matInput formControlName="address" required></textarea>
+              <mat-error *ngIf="firstFormGroup.get('address')?.hasError('required')">
+                Please enter an address
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group" fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="10">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" type="password" required>
+              <mat-error *ngIf="firstFormGroup.get('password')?.hasError('required')">
+                Please enter a password
+              </mat-error>
+              <mat-error *ngIf="firstFormGroup.get('password')?.hasError('minlength')">
+                Email must be at least 4 characters
+              </mat-error>
+              <mat-error *ngIf="firstFormGroup.get('password')?.hasError('maxlength')">
+                Email must be at most 30 characters
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Confirm Password</mat-label>
+              <input matInput type="password" formControlName="passwordConfirm" required>
+              <mat-error
+                *ngIf="firstFormGroup.value.password !== firstFormGroup.value.passwordConfirm">
+                Confirm Password does not match Password
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group" fxLayout="row" fxLayoutAlign="space-evenly center">
+            <mat-card-actions class="login-actions mt-2" fxFlex fxLayout fxLayoutAlign="center">
+              <button mat-raised-button id="login" color="primary" [disabled]="firstFormGroup.invalid ||
+              loading"
+                      (click)="onSubmit()">Create your account
+              </button>
+            </mat-card-actions>
+          </div>
+          <div class="form-group w-100 mt-3" fxLayout="row" fxLayoutAlign="space-evenly center">
+            <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

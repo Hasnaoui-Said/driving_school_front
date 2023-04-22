@@ -8,11 +8,6 @@
         <mat-form-field class="full-width">
           <input id="emailInput" matInput placeholder="UserName" formControlName="email" autocomplete="email"
                  type="text">
-
-          <mat-error id="invalidEmailError" *ngIf="true">
-            {{loginForm.controls['email'].errors | json}}
-          </mat-error>
-
           <mat-error id="minlengthEmailError" *ngIf="loginForm.controls['email'].hasError('minlength')">
             Email must be at least 4 characters
           </mat-error>
@@ -29,7 +24,7 @@
         <mat-form-field class="full-width">
           <input id="passwordInput" matInput placeholder="Password" formControlName="password" type="password"
                  autocomplete="current-password">
-          <mat-error id="requiredPasswordError" *ngIf="loginForm.controls['email'].hasError('required')">
+          <mat-error id="requiredPasswordError" *ngIf="loginForm.controls['password'].hasError('required')">
             Password is
             <strong>required</strong>
           </mat-error>

@@ -67,17 +67,17 @@
           <p mat-line> Dashboard </p>
         </a>
 
-        <a mat-list-item [routerLink]="['customers']" routerLinkActive="active">
+        <a mat-list-item [routerLink]="['calendar']" routerLinkActive="active">
           <mat-icon fxFlex="30">
             business
           </mat-icon>
-          <p mat-line> Customers </p>
+          <p mat-line> calendar </p>
         </a>
-        <a mat-list-item flex="row" [routerLink]="['users']" routerLinkActive="active">
+        <a mat-list-item flex="row" [routerLink]="['course']" routerLinkActive="active">
           <mat-icon fxFlex="30">
-            people
+            book
           </mat-icon>
-          <p mat-line> Users </p>
+          <p mat-line> course </p>
         </a>
 
         <a mat-list-item [routerLink]="['account/profile']">
@@ -85,7 +85,7 @@
           <p mat-line> Account </p>
         </a>
 
-        <a mat-list-item [routerLink]="['/auth/login']">
+        <a mat-list-item (click)="logOut()">
           <mat-icon fxFlex="30">exit_to_app</mat-icon>
           <p mat-line> Log out </p>
         </a>

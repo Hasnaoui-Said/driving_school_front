@@ -1,4 +1,4 @@
-<app-empty-list *ngIf="loadingData || usersLength == 0; else data"
+<app-empty-list *ngIf="loadingData || numberOfElements == 0; else data"
                 [Image]="'../../../../assets/media/svg/misc/users.svg'"
                 [Title]="'No Data From User Found'"
                 [Description]="'Description'"
@@ -106,9 +106,26 @@
       </tr>
       <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
     </table>
-    <mat-paginator [pageSize]="5" [length]="usersLength"
-                   showFirstLastButtons
-                   aria-label="Select page of periodic elements">
+<!--    <mat-paginator [pageSize]="totalElements" [length]="numberOfElements"-->
+<!--                   showFirstLastButtons-->
+<!--                   aria-label="Select page of periodic elements">-->
+<!--    </mat-paginator>-->
+    <mat-paginator #paginator
+                   class="demo-paginator"
+                   (page)="handlePageEvent($event)"
+                   [length]="totalElements"
+                   [pageSize]="numberOfElements"
+                   [disabled]="disabled"
+                   [showFirstLastButtons]="showFirstLastButtons"
+                   [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+                   [hidePageSize]="hidePageSize"
+                   [pageIndex]="pageNumber"
+                   aria-label="Select page">
     </mat-paginator>
+
+<!--    <div class="demo-data">-->
+<!--      <div> Output event: {{(pageEvent | json) || 'No events dispatched yet'}} </div>-->
+<!--      <div> getNumberOfPages: {{paginator.getNumberOfPages()}} </div>-->
+<!--    </div>-->
   </div>
 </ng-template>

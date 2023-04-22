@@ -6,12 +6,18 @@ import {ElearningComponent} from "./elearning.component";
 import {SharedModule} from "../../shared/shared.module";
 import {MatLineModule} from "@angular/material/core";
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CourseComponent } from './course/course.component';
+import { AccountComponent } from './account/account.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 @NgModule({
   declarations: [
     ElearningComponent,
-    DashboardComponent
+    DashboardComponent,
+    CourseComponent,
+    AccountComponent,
+    CalendarComponent
   ],
   imports: [
     CommonModule,
